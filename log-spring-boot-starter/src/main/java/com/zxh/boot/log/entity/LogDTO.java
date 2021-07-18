@@ -65,9 +65,14 @@ public class LogDTO{
     private String createBy;
 
     /**
-     * 异常信息
+     * 异常原因
      */
-    private String exception;
+    private String exMsg;
+
+    /**
+     * 异常详细信息
+     */
+    private String exDetail;
 
     /**
      * 开始时间

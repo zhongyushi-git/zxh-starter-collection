@@ -3,7 +3,6 @@ package com.zxh.boot.log.listener;
 import com.zxh.boot.log.entity.LogDTO;
 import com.zxh.boot.log.event.LogEvent;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.annotation.Order;
 import org.springframework.scheduling.annotation.Async;
@@ -13,7 +12,6 @@ import java.util.function.Consumer;
 /**
  * 日志事件监听
  */
-@Slf4j
 @AllArgsConstructor
 public class LogListener {
 

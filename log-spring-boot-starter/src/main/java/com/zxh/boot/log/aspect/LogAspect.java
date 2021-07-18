@@ -123,7 +123,8 @@ public class LogAspect {
         if (null != e) {
             log.error("发生异常：", e);
             logDTO.setHandleStatus(!SUCCESS);
-            logDTO.setException(e.toString());
+            logDTO.setExMsg(e.getMessage());
+            logDTO.setExDetail(e.toString());
         }
         this.publishEvent(logDTO);
     }
