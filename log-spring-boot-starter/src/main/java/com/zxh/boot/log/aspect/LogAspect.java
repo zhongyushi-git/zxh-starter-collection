@@ -30,6 +30,9 @@ public class LogAspect {
 
     //成功的标志
     private final static boolean SUCCESS = true;
+    //请求头的用户信息
+    private final static String HEADER_USER_ID = "userId";
+    private final static String HEADER_USER_NAME = "userName";
 
     @Autowired
     private ApplicationContext applicationContext;
@@ -74,6 +77,8 @@ public class LogAspect {
         }
         logDTO.setParams(getText(strArgs));
         logDTO.setStartTime(LocalDateTime.now());
+        logDTO.setCreateByUser(request.getHeader(HEADER_USER_NAME));
+        logDTO.setCreateById(request.getHeader(HEADER_USER_ID));
         SessionCache.putCache(logDTO);
     }
 

@@ -60,9 +60,14 @@ public class LogDTO{
     private String description;
 
     /**
-     * 创建人
+     * 创建人用户名
      */
-    private String createBy;
+    private String createByUser;
+
+    /**
+     * 创建人id
+     */
+    private String createById;
 
     /**
      * 异常原因
