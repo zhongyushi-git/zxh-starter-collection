@@ -63,16 +63,16 @@ public class LogAspect {
         logDTO.setDescription(annotation.value()).setType(annotation.type());
 
         Object[] args = joinPoint.getArgs();//请求参数
-        String strArgs = "";
-        try {
-            if (!request.getContentType().contains("multipart/form-data")) {
-                strArgs = JSONObject.toJSONString(args);
-            }
-        } catch (Exception e) {
-            try {
-                strArgs = Arrays.toString(args);
-            } catch (Exception ex) {
-                log.warn("解析参数异常", ex);
+        // 参数名
+        String[] argNames = ((MethodSignature) joinPoint.getSignature()).getParameterNames();
+        StringBuffer params = new StringBuffer();
+        for (int i = 0; i < argNames.length; i++) {
+            if (i == 0) {
+                params.append("{" + argNames[i] + ":" + args[i] + ",");
+            } else if (i == argNames.length - 1) {
+                params.append(argNames[i] + ":" + args[i] + "}");
+            } else {
+                params.append(argNames[i] + ":" + args[i] + ",");
             }
         }
         logDTO.setParams(getText(strArgs));
